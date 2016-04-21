@@ -17,14 +17,14 @@ public class App {
 	public static void main(String[] args) {
 		Dictionary abc=null;
 		//new MainThread();
-		
+		//new BagTiles();
 		try {
 			abc=new Dictionary();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println(abc.voc.getNode("zymase").isWord());
+//		System.out.println(abc.voc.getNode("gr").isWord());
 		
 		Table b=new Table();
 		Referee p=new Referee(b);
@@ -83,6 +83,9 @@ public class App {
 	      mainFrame.add(labelPlayer3, BorderLayout.EAST);
 	      mainFrame.add(labelPlayer4, BorderLayout.SOUTH);
 	      mainFrame.setVisible(true); 
+		
+		AutomatSolver automatSolver=new AutomatSolver();
+		System.out.println(automatSolver.getWord());
 	}
 
 }
