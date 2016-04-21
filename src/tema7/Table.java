@@ -3,14 +3,18 @@ package tema7;
 import java.io.IOException;
 import java.util.Vector;
 
+import javax.swing.JTextArea;
+
 class Table {
 	private int currentPlayerNumber = -1;
+	 JTextArea textArea;
 	private boolean available = false;
 	private BagTiles bagTiles;
 	Vector<Player> players;
 	
-	public Table()
+	public Table( JTextArea textArea)
 	{
+		this.textArea=textArea;
 		try {
 			bagTiles=new BagTiles();
 		} catch (IOException e1) {
@@ -31,7 +35,17 @@ class Table {
 	private void playRound()
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
+		if(currentPlayer.getNumberTiles()!=7)
+		{
+		
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
+		
+		for(int i=0;i<currentPlayer.getMyTiles().size();i++)
+		{
+			this.textArea.append(currentPlayer.getMyTiles().elementAt(i).toString()+'\n');
+		}
+		System.out.println("************8");
+		}
 	}
 	
 	public synchronized int get(int consNumber) {
