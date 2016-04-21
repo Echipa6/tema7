@@ -5,6 +5,7 @@ import java.util.Vector;
 class Player extends Thread {
 	private Table table;
 	private int number; 
+	AutomatSolver solver;
 	
 	private Vector<Character> myTiles;
 	
@@ -12,6 +13,7 @@ class Player extends Thread {
 		table = b;
 		number=nr;
 		setMyTiles(new Vector<Character>());
+		solver = new AutomatSolver();
 	}
 	public void run() {
 		int value = 0;
@@ -35,6 +37,17 @@ class Player extends Thread {
 		while(!randomTiles.isEmpty())
 		{
 			myTiles.add(randomTiles.remove(randomTiles.size()-1));
+		}
+		
+	}
+	public void removeMyTiles(String word) {
+		
+		
+		for(int i=0;i<word.length();i++)
+		{
+				int index_nr=myTiles.indexOf(word.charAt(i));
+				myTiles.remove(index_nr);
+			
 		}
 		
 	}

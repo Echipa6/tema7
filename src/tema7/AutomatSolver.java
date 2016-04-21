@@ -10,18 +10,10 @@ public class AutomatSolver extends Solver{
 		findedWords=new Vector<String>();
 	}
 	@Override
-	public String getWord() {
-		// TODO Auto-generated method stub
-		tiles=new Vector<Character>();
-		this.tiles.add('a');
-		this.tiles.add('b');
-
-		this.tiles.add('c');
-		this.tiles.add('d');
-
-		this.tiles.add('d');
-		this.tiles.add('f');
-		this.tiles.add('g');
+	public String getWord(Vector<Character> tiles) {
+		this.tiles=tiles;
+		
+		findedWords=new Vector<String>();
 
 		//circular shifting;
 		for(int i=0;i<this.tiles.size()-1;i++)
@@ -114,5 +106,6 @@ public class AutomatSolver extends Solver{
 		return null;
 		
 	}
+
 
 }
