@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -63,13 +64,17 @@ public class App {
 	      JLabel labelTable=new JLabel("ABCD");
 	      labelTable.setHorizontalAlignment(JLabel.CENTER);
 	      
-	      JLabel labelPlayer1=new JLabel("Player1");
+	      ImageIcon imageIcon = new ImageIcon("PlayerLeft.png");
+	      
+	      JLabel labelPlayer1=new JLabel("Player1",imageIcon,JLabel.CENTER);
 	      labelPlayer1.setHorizontalAlignment(JLabel.CENTER);
 	      
-	      JLabel labelPlayer2=new JLabel("Player2");
+	      imageIcon = new ImageIcon("PlayerTop.png");
+	      JLabel labelPlayer2=new JLabel("Player2",imageIcon,JLabel.CENTER);
 	      labelPlayer2.setHorizontalAlignment(JLabel.CENTER);
 	      
-	      JLabel labelPlayer3=new JLabel("Player3");
+	      imageIcon = new ImageIcon("PlayerRight.png");
+	      JLabel labelPlayer3=new JLabel("Player3",imageIcon,JLabel.CENTER);
 	      labelPlayer3.setHorizontalAlignment(JLabel.CENTER);
 	      
 	      JLabel labelPlayer4=new JLabel("Player4");

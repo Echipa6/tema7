@@ -29,23 +29,31 @@ public class AutomatSolver extends Solver{
 			for(int j=0;j<this.tiles.size();j++)
 			{
 
-				//System.out.println(tiles.toString());
-				//System.out.println(tryToFindWord());
+				
 				tryToFindWord();
 				Character aux=tiles.elementAt(0);
 				tiles.remove(0);
 				tiles.add(tiles.size()-i, aux);
 			}
-			System.out.println();
+			
 		}
 		
-		for(int i=0;i<findedWords.size();i++)
+		return selectBigestWord();
+	}
+	
+	public String selectBigestWord()
+	{
+		String word="";
+			
+		for(String word1 :findedWords)
 		{
-			System.out.println(findedWords.get(i));
+			if(word1.length()>word.length())
+			{
+				word=word1;
+			}
 		}
-		
-		
-		return null;
+			
+		return word;
 	}
 	
 	public String tryToFindWord()
@@ -99,10 +107,10 @@ public class AutomatSolver extends Solver{
 					added.set(i, 0);
 				}
 			}
-			//System.out.println(constructedWord);
+			
 			
 		}
-		//System.out.println(dictionary.voc.getNode(constructedWord.toString()).isWord());
+		
 		return null;
 		
 	}
