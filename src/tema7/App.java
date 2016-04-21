@@ -15,13 +15,12 @@ public class App {
 
 
 	public static void main(String[] args) {
-		dictionary abc=null;
+		Dictionary abc=null;
 		//new MainThread();
 		
 		try {
-			abc=new dictionary();
+			abc=new Dictionary();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

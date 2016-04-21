@@ -8,11 +8,11 @@ import java.util.Map;
 
 import net.webeggs.juzzle.vocabulary.LowercaseTrieVocabulary;
 
-public class dictionary {
+public class Dictionary {
 	public Map<String, Integer> map;
 	public LowercaseTrieVocabulary voc;
 
-	dictionary() throws IOException
+	Dictionary() throws IOException
 	{
 		map = new HashMap<String, Integer>();
 		voc=new LowercaseTrieVocabulary();
