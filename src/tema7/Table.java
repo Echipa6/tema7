@@ -38,21 +38,14 @@ class Table {
 		this.textArea.append(word+'\n');
 		currentPlayer.removeMyTiles(word);
 		
-		System.out.println(currentPlayerNumber+"  "+word + currentPlayer.getNumberTiles());
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		
-		for(int i=0;i<currentPlayer.getMyTiles().size();i++)
-		{
-			System.out.println(currentPlayer.getMyTiles().elementAt(i).toString());
-		}
-		System.out.println("SIZE TILES: "+this.bagTiles.bag.size());
 	}
 	private void playRound()
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
 
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
-		//System.out.println(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
 		
 		reloadTail(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
 		try {
