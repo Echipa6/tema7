@@ -1,24 +1,28 @@
 package tema7;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class App {
-
-
+	
+	public static int width=800;
+	public static int height=600;
+	
 	public static void main(String[] args) {
 		Dictionary abc=null;
 		try {
@@ -43,7 +47,8 @@ public class App {
 		JFrame mainFrame;
 		
 		mainFrame = new JFrame("Java Swing Examples");
-	      mainFrame.setSize(500,400);
+	      mainFrame.setSize(width,height);
+	      mainFrame.setResizable(false);
 	      mainFrame.setLayout(new BorderLayout());
 
 
@@ -77,18 +82,26 @@ public class App {
 	      JLabel labelPlayer4=new JLabel("Player4");
 	      labelPlayer4.setHorizontalAlignment(JLabel.CENTER);
 	      
-	      JTextArea textArea = new JTextArea ("Test");
-	      textArea.setLineWrap(true);
-	      textArea.setWrapStyleWord(true);
-	      
-	      JScrollPane scrollV = new JScrollPane ();
-	      scrollV.getViewport().setView(textArea);
+	     
+	      JPanel middlePanel=new JPanel();
+	     // middlePanel.setBorder(new TitledBorder(new EtchedBorder(), "GameInfo"));
+	      middlePanel.setPreferredSize(new Dimension(300,300));
+	      // create the middle panel components
 
-	      scrollV.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);   
-	      labelTable.add(textArea);
+	      JTextArea textArea= new JTextArea();
+	      //textArea.setPreferredSize(new Dimension(300,300));
+	      //textArea.setEditable(false); // set textArea non-editable
+	      JScrollPane scroll = new JScrollPane(textArea);
+	      scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
 	      
+	      //Add Textarea in to middle panel
+	      middlePanel.add(scroll);
+	      scroll.setPreferredSize(scroll.getParent().getPreferredSize());
+	      scroll.setBorder(new TitledBorder(new EtchedBorder(), "GameTable"));
+	      mainFrame.add(middlePanel, BorderLayout.CENTER);
+	      middlePanel.setPreferredSize(middlePanel.getParent().getPreferredSize());
 	      
-	      mainFrame.add(textArea, BorderLayout.CENTER);
 	      mainFrame.add(labelPlayer1, BorderLayout.WEST);
 	      mainFrame.add(labelPlayer2, BorderLayout.NORTH);
 	      mainFrame.add(labelPlayer3, BorderLayout.EAST);
