@@ -1,52 +1,55 @@
 package tema7;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Vector;
 
 public class BagTiles {
 	Vector<Character> bag;
+	private Random rand;
 	
-	BagTiles()
+	BagTiles() throws IOException
 	{
+		rand= new Random();
 		bag= new Vector<Character>();
 		FileReader fr=null;
-		try {
-			fr = new FileReader("Distribution.txt");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		fr = new FileReader("Distribution.txt");
+			
 		BufferedReader textReader= new BufferedReader(fr);
 		String textData= new String();
 		for(int i=0;i<26;i++)
 		{
-			try {
-				textData=textReader.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Character c= textData.charAt(0);
+			textData=textReader.readLine();
 			int numberOfChar= Integer.parseInt(textData.substring(2));
 			for(int j=0;j<numberOfChar;j++)
 			{
-				//System.out.println(nb);
-				bag.add(c);
+				bag.add(textData.charAt(0));
 			}
 		}
-		try {
-			textReader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		textReader.close();
+		
+		
+	}
+	
+	public Vector<Character> getTiles(int numberTiles)
+	{
+		Vector<Character> randomTiles= new Vector<Character>();
+		int randomNum;
+		for(int i=0;i<numberTiles;i++)
+		{
+			if(bag.isEmpty())
+			{
+				System.out.println("Bag is Empty. Game OVER!");
+				System.exit(0);
+			}
+			randomNum = rand.nextInt((bag.size()));
+			randomTiles.add(bag.remove(randomNum));
 		}
-//		for(int i=0;i<bag.size();i++)
-//		{
-//			System.out.println(bag.elementAt(i));
-//		}
+		return randomTiles;
 		
 	}
 }
