@@ -1,19 +1,37 @@
 package tema7;
 
+import java.awt.Color;
 import java.util.Vector;
+
+import javax.swing.JLabel;
 
 class Player extends Thread {
 	private Table table;
 	private int number; 
 	AutomatSolver solver;
 	
+	private int score;
+	private JLabel labelPlayer;
 	private Vector<Character> myTiles;
 	
-	public Player(Table b, int nr) {
+	public Player(Table b, int nr, JLabel label) {
 		table = b;
 		number=nr;
+		score=0;
+		this.labelPlayer=label;
+		labelPlayer.setText("<html>Player1: <br> score:"+score+"</html>");
+
 		setMyTiles(new Vector<Character>());
 		solver = new AutomatSolver();
+	}
+	public void setLabelActive()
+	{
+		labelPlayer.setText("<html><font color='red'>Player1: <br> score:"+score+"</font></html>");
+	}
+	
+	public void endTurn()
+	{
+		labelPlayer.setText("<html>Player1: <br> score:"+score+"</html>");
 	}
 	public void run() {
 		int value = 0;
@@ -49,6 +67,10 @@ class Player extends Thread {
 				myTiles.remove(index_nr);
 			
 		}
+		
+	}
+	public void gainScore(int i) {
+		this.score+=i;
 		
 	}
 }
