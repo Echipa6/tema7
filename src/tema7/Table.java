@@ -35,6 +35,7 @@ class Table {
 	private void playRound()
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
+		currentPlayer.setLabelActive();
 		if(currentPlayer.getNumberTiles()!=7)
 		{
 		
