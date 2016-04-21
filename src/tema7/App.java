@@ -11,12 +11,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class App {
 
 
 	public static void main(String[] args) {
 		Dictionary abc=null;
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//new MainThread();
 		//new BagTiles();
 		try {
@@ -27,21 +38,7 @@ public class App {
 		
 //		System.out.println(abc.voc.getNode("gr").isWord());
 		
-		Table b=new Table();
-		Referee p=new Referee(b);
-		Player c1=new Player(b,1);
-		Player c2=new Player(b,2);
-		Player c3=new Player(b,3);
 		
-		b.addPlayer(c1);
-		b.addPlayer(c2);
-		b.addPlayer(c3);
-		
-		p.start();
-		c1.start();
-		c2.start();
-		c3.start();
-		System.out.println(abc.map.get("kibbled"));
 		
 		JFrame mainFrame;
 		
@@ -61,7 +58,7 @@ public class App {
 //	      controlPanel.add(new JLabel("ABCD"));
 	      
 	      //JPanel controlPanel = new JPanel();
-	      JLabel labelTable=new JLabel("ABCD");
+	      JLabel labelTable=new JLabel();
 	      labelTable.setHorizontalAlignment(JLabel.CENTER);
 	      
 	      ImageIcon imageIcon = new ImageIcon("PlayerLeft.png");
@@ -80,17 +77,46 @@ public class App {
 	      JLabel labelPlayer4=new JLabel("Player4");
 	      labelPlayer4.setHorizontalAlignment(JLabel.CENTER);
 	      
+	      JTextArea textArea = new JTextArea ("Test");
+	      textArea.setLineWrap(true);
+	      textArea.setWrapStyleWord(true);
+	      
+	      JScrollPane scrollV = new JScrollPane ();
+	      scrollV.getViewport().setView(textArea);
+
+	      scrollV.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);   
+	      labelTable.add(textArea);
 	      
 	      
-	      mainFrame.add(labelTable, BorderLayout.CENTER);
+	      mainFrame.add(textArea, BorderLayout.CENTER);
 	      mainFrame.add(labelPlayer1, BorderLayout.WEST);
 	      mainFrame.add(labelPlayer2, BorderLayout.NORTH);
 	      mainFrame.add(labelPlayer3, BorderLayout.EAST);
 	      mainFrame.add(labelPlayer4, BorderLayout.SOUTH);
+	      
+	      Table b=new Table(textArea);
+			Referee p=new Referee(b);
+			Player c1=new Player(b,1);
+			Player c2=new Player(b,2);
+			Player c3=new Player(b,3);
+			
+			b.addPlayer(c1);
+			b.addPlayer(c2);
+			b.addPlayer(c3);
+			
+			p.start();
+			c1.start();
+			c2.start();
+			c3.start();
+			System.out.println(abc.map.get("kibbled"));
+	      
+	      
 	      mainFrame.setVisible(true); 
 		
 		AutomatSolver automatSolver=new AutomatSolver();
 		System.out.println(automatSolver.getWord());
+		
+		
 	}
 
 }

@@ -36,10 +36,6 @@ class Player extends Thread {
 		{
 			myTiles.add(randomTiles.remove(randomTiles.size()-1));
 		}
-		for(int i=0;i<myTiles.size();i++)
-		{
-			System.out.println(myTiles.elementAt(i));
-		}
-		System.out.println("************8");
+		
 	}
 }
