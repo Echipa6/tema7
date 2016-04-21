@@ -4,7 +4,8 @@ import java.util.Vector;
 
 public abstract class Solver {
 	
-	private Vector<Character> tiles;
+	protected Vector<Character> tiles;
+	
 	public Vector<Character> getTiles() {
 		return tiles;
 	}
