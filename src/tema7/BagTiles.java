@@ -43,10 +43,10 @@ public class BagTiles {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i=0;i<bag.size();i++)
-		{
-			System.out.println(bag.elementAt(i));
-		}
+//		for(int i=0;i<bag.size();i++)
+//		{
+//			System.out.println(bag.elementAt(i));
+//		}
 		
 	}
 }
