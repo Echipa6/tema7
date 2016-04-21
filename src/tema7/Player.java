@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 class Player extends Thread {
 	private Table table;
 	private int number; 
+	AutomatSolver solver;
+	
 	private int score;
 	private JLabel labelPlayer;
 	private Vector<Character> myTiles;
@@ -20,6 +22,7 @@ class Player extends Thread {
 		labelPlayer.setText("<html>Player1: <br> score:"+score+"</html>");
 
 		setMyTiles(new Vector<Character>());
+		solver = new AutomatSolver();
 	}
 	public void setLabelActive()
 	{
@@ -53,6 +56,21 @@ class Player extends Thread {
 		{
 			myTiles.add(randomTiles.remove(randomTiles.size()-1));
 		}
+		
+	}
+	public void removeMyTiles(String word) {
+		
+		
+		for(int i=0;i<word.length();i++)
+		{
+				int index_nr=myTiles.indexOf(word.charAt(i));
+				myTiles.remove(index_nr);
+			
+		}
+		
+	}
+	public void gainScore(int i) {
+		this.score+=i;
 		
 	}
 }

@@ -32,21 +32,30 @@ class Table {
 		return bagTiles.getTiles(7-currentNumberTiles);
 		
 	}
-	private void playRound()
+	private void reloadTail(String word)
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
 		currentPlayer.setLabelActive();
-		if(currentPlayer.getNumberTiles()!=7)
-		{
-		
+		this.textArea.append("Player"+currentPlayerNumber+" "+word+'\n');
+		currentPlayer.gainScore(word.length()*5);
+		currentPlayer.removeMyTiles(word);
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		
-		for(int i=0;i<currentPlayer.getMyTiles().size();i++)
-		{
-			this.textArea.append(currentPlayer.getMyTiles().elementAt(i).toString()+'\n');
+	}
+	private void playRound()
+	{
+		Player currentPlayer=players.elementAt(currentPlayerNumber);
+
+		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
+		//System.out.println(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
+		
+		reloadTail(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		System.out.println("************8");
-		}
+		currentPlayer.endTurn();
 	}
 	
 	public synchronized int get(int consNumber) {
@@ -60,7 +69,7 @@ class Table {
 		}
 		
 		available = false;
-		System.out.println(	"Consumatorul "+consNumber+" primit:\t" + currentPlayerNumber);
+		//System.out.println(	"Consumatorul "+consNumber+" primit:\t" + currentPlayerNumber);
 		playRound();
 		
 		
@@ -78,7 +87,7 @@ class Table {
 		}
 		this.currentPlayerNumber = number;
 		available = true;
-		System.out.println("Producatorul a pus:\t" + number);
+		//System.out.println("Producatorul a pus:\t" + number);
 		notifyAll();
 	}
 }

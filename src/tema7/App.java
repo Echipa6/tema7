@@ -135,7 +135,7 @@ public class App {
 		mainFrame.setVisible(true); 
 
 		AutomatSolver automatSolver=new AutomatSolver();
-		System.out.println(automatSolver.getWord());
+		//System.out.println(automatSolver.getWord());
 
 
 	}
