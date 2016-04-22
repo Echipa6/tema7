@@ -45,11 +45,13 @@ class Table {
 	}
 	private void playRound()
 	{
+		
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
-
+		
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		currentPlayer.setLabelActive();
 		reloadTail(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
+		
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {

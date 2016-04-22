@@ -17,7 +17,7 @@ class Referee extends Thread {
 	public void run() {
 		for (int i = 0; i < 1000; i++) {
 			
-			table.put(i % 3);
+			table.put(i % 4);
 		}
 	}
 }

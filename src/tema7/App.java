@@ -29,7 +29,7 @@ public class App {
 	public static int width=900;
 	public static int height=600;
 
-	private static JFrame mainFrame;
+	public static JFrame mainFrame;
 	private static JTextArea textArea;
 	private static JLabel labelPlayer1;
 	private static JLabel labelPlayer2;
@@ -79,12 +79,6 @@ public class App {
 		wordToSubmit= new JTextField(10);
 		wordToSubmit.setVisible(true);
 		submit=new JButton("submit");
-		submit.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent evt) {
-		        System.out.println("Handled by anonymous class listener");
-		    }
-		}
-		);
 			
 		playerBottomPanel.add(wordToSubmit);
 		playerBottomPanel.add(submit);
@@ -135,8 +129,10 @@ public class App {
 
 		//		System.out.println(abc.voc.getNode("gr").isWord());
 
+		
+		
+		
 		setGUI();
-
 				
 		
 		Table b=new Table(textArea);
@@ -144,15 +140,26 @@ public class App {
 		Player c1=new Player(b,1,labelPlayer1);
 		Player c2=new Player(b,2,labelPlayer2);
 		Player c3=new Player(b,3,labelPlayer3);
-
+		Player c4=new Player(b,4,labelPlayer4);
 		b.addPlayer(c1);
 		b.addPlayer(c2);
 		b.addPlayer(c3);
-
+		b.addPlayer(c4);
+			
+		submit.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent evt) {
+		        String word=wordToSubmit.getText();
+		        ((ManualSolver)c4.solver).setWordToValidate(word.toUpperCase());
+		    }
+		}
+		);
+		
+		
 		p.start();
 		c1.start();
 		c2.start();
 		c3.start();
+		c4.start();
 		System.out.println(abc.map.get("kibbled"));
 
 
