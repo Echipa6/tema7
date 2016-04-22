@@ -64,21 +64,25 @@ class Table {
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		currentPlayer.setLabelActive();
 		
-		String s=currentPlayer.solver.getWord(currentPlayer.getMyTiles());
+		String s="";
 		int i=0;
 		while(s.isEmpty())
 		{
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			s=currentPlayer.solver.getWord(currentPlayer.getMyTiles());
-			//System.out.println(i);
+			System.out.println(i++);
 			
+		}
+		if(currentPlayerNumber==3){
+			((ManualSolver)currentPlayer.solver).wordToValidate="";
 		}
 		reloadTail(s);
 		
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
 		currentPlayer.endTurn();
 	}
 	

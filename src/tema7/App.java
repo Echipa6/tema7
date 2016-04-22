@@ -158,6 +158,7 @@ public class App {
 		    public void actionPerformed(ActionEvent evt) {
 		        String word=wordToSubmit.getText();
 		        ((ManualSolver)c4.solver).setWordToValidate(word.toUpperCase());
+		       
 		        wordToSubmit.setText("");
 		    }
 		}

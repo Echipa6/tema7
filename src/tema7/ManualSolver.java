@@ -5,7 +5,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 public class ManualSolver extends Solver {
-	String wordToValidate="";
+	public String wordToValidate="";
 	boolean valid=false;
 	public void setWordToValidate(String wordToValidate) {
 		
