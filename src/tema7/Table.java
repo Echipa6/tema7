@@ -39,6 +39,7 @@ class Table {
 		this.textArea.append("Player"+currentPlayerNumber+1+" "+word+'\n');
 		currentPlayer.gainScore(word.length()*5);
 		currentPlayer.removeMyTiles(word);
+
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		
 	}
@@ -47,7 +48,6 @@ class Table {
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
 
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
-		//System.out.println(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
 		currentPlayer.setLabelActive();
 		reloadTail(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
 		try {
