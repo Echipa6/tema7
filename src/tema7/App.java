@@ -28,6 +28,8 @@ public class App {
 
 	public static int width=900;
 	public static int height=600;
+	
+	static JLabel statusLabel;
 
 	private static JFrame mainFrame;
 	private static JTextArea textArea;
@@ -106,10 +108,16 @@ public class App {
 		scroll.setBorder(new TitledBorder(new EtchedBorder(), "GameTable"));
 		mainFrame.add(middlePanel, BorderLayout.CENTER);
 		middlePanel.setPreferredSize(middlePanel.getParent().getPreferredSize());
-
 		
+		statusLabel = new JLabel("",JLabel.RIGHT);
+		
+		JPanel northPlayer= new JPanel();
+		northPlayer.add(labelPlayer2);
+		northPlayer.add(statusLabel,BorderLayout.EAST);
+
+		//mainFrame.add(statusLabel,BorderLayout.NORTH);
 		mainFrame.add(labelPlayer1, BorderLayout.WEST);
-		mainFrame.add(labelPlayer2, BorderLayout.NORTH);
+		mainFrame.add(northPlayer, BorderLayout.NORTH);
 		mainFrame.add(labelPlayer3, BorderLayout.EAST);
 		
 		mainFrame.add(playerBottomPanel, BorderLayout.SOUTH);
@@ -140,7 +148,7 @@ public class App {
 				
 		
 		Table b=new Table(textArea);
-		Referee p=new Referee(b, textArea);
+		Referee p=new Referee(b, statusLabel);
 		Player c1=new Player(b,1,labelPlayer1);
 		Player c2=new Player(b,2,labelPlayer2);
 		Player c3=new Player(b,3,labelPlayer3);
@@ -153,7 +161,6 @@ public class App {
 		c1.start();
 		c2.start();
 		c3.start();
-		System.out.println(abc.map.get("kibbled"));
 
 
 		mainFrame.setVisible(true); 

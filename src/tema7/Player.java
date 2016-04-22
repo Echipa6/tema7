@@ -19,19 +19,19 @@ class Player extends Thread {
 		number=nr;
 		score=0;
 		this.labelPlayer=label;
-		labelPlayer.setText("<html>                   Player1: <br> score:"+score+"</html>");
+		labelPlayer.setText("<html>__________________<br>Player"+number+": <br> score:"+score+"</html>");
 
 		setMyTiles(new Vector<Character>());
 		solver = new AutomatSolver();
 	}
 	public void setLabelActive()
 	{
-		labelPlayer.setText("<html>"+this.getMyTiles().toString()+"<br><font color='red'>Player1: <br> score:"+score+"</font></html>");
+		labelPlayer.setText("<html>"+this.getMyTiles().toString()+"<br>__________________<br><font color='red'>Player"+number+": <br> score:"+score+"</font></html>");
 	}
 	
 	public void endTurn()
 	{
-		labelPlayer.setText("<html>                 Player1: <br> score:"+score+"</html>");
+		labelPlayer.setText("<html>"+this.getMyTiles().toString()+"<br>__________________<br><font color='blue'>Player"+number+": <br> score:"+score+"</font></html>");
 	}
 	public void run() {
 		int value = 0;
