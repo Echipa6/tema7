@@ -1,19 +1,21 @@
 package tema7;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -22,7 +24,7 @@ import javax.swing.border.TitledBorder;
 
 public class App {
 
-	public static int width=800;
+	public static int width=900;
 	public static int height=600;
 
 	private static JFrame mainFrame;
@@ -32,7 +34,8 @@ public class App {
 	private static JLabel labelPlayer3;
 	private static JLabel labelPlayer4;
 	
-	
+	private static JTextField  wordToSubmit;
+	private static JButton submit;
 	public static void setGUI(){
 
 		mainFrame = new JFrame("Word Game");
@@ -55,6 +58,7 @@ public class App {
 		labelPlayer1.setHorizontalAlignment(JLabel.CENTER);
 
 		
+		
 		imageIcon = new ImageIcon("PlayerTop.png");
 		labelPlayer2=new JLabel("Player2",imageIcon,JLabel.CENTER);
 		labelPlayer2.setHorizontalAlignment(JLabel.CENTER);
@@ -65,14 +69,30 @@ public class App {
 		labelPlayer3.setHorizontalAlignment(JLabel.CENTER);
 
 		
+		JPanel playerBottomPanel =new JPanel();
+		
 		labelPlayer4=new JLabel("Player4");
 		labelPlayer4.setHorizontalAlignment(JLabel.CENTER);
-
-
+		
+		wordToSubmit= new JTextField(10);
+		wordToSubmit.setVisible(true);
+		submit=new JButton("submit");
+		submit.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent evt) {
+		        System.out.println("Handled by anonymous class listener");
+		    }
+		}
+		);
+			
+		playerBottomPanel.add(wordToSubmit);
+		playerBottomPanel.add(submit);
+		
+		playerBottomPanel.add(labelPlayer4);
+		
+		
 		
 		JPanel middlePanel=new JPanel();
 		middlePanel.setPreferredSize(new Dimension(300,300));
-
 		textArea= new JTextArea();
 		JScrollPane scroll = new JScrollPane(textArea);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -85,10 +105,12 @@ public class App {
 		mainFrame.add(middlePanel, BorderLayout.CENTER);
 		middlePanel.setPreferredSize(middlePanel.getParent().getPreferredSize());
 
+		
 		mainFrame.add(labelPlayer1, BorderLayout.WEST);
 		mainFrame.add(labelPlayer2, BorderLayout.NORTH);
 		mainFrame.add(labelPlayer3, BorderLayout.EAST);
-		mainFrame.add(labelPlayer4, BorderLayout.SOUTH);
+		
+		mainFrame.add(playerBottomPanel, BorderLayout.SOUTH);
 
 
 	}

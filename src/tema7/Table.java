@@ -35,8 +35,8 @@ class Table {
 	private void reloadTail(String word)
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
-		currentPlayer.setLabelActive();
-		this.textArea.append("Player"+currentPlayerNumber+" "+word+'\n');
+		
+		this.textArea.append("Player"+currentPlayerNumber+1+" "+word+'\n');
 		currentPlayer.gainScore(word.length()*5);
 		currentPlayer.removeMyTiles(word);
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
@@ -48,14 +48,14 @@ class Table {
 
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		//System.out.println(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
-		
+		currentPlayer.setLabelActive();
 		reloadTail(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		currentPlayer.endTurn();
+		//currentPlayer.endTurn();
 	}
 	
 	public synchronized int get(int consNumber) {
