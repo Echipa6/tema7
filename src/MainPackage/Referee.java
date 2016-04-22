@@ -1,9 +1,11 @@
-package tema7;
+package MainPackage;
 
 import java.util.Timer;
 
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+
+import UsefullClasses.TimeKeeper;
 
 class Referee extends Thread {
 	private Table table;

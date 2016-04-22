@@ -1,7 +1,9 @@
-package tema7;
+package Solver;
 
 import java.io.IOException;
 import java.util.Vector;
+
+import UsefullClasses.Dictionary;
 
 public abstract class Solver {
 	

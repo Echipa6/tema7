@@ -1,8 +1,10 @@
-package tema7;
+package Solver;
 
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
+
+import MainPackage.App;
 
 public class ManualSolver extends Solver {
 	public String wordToValidate="";

@@ -1,4 +1,4 @@
-package tema7;
+package MainPackage;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -23,6 +23,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
+import Solver.AutomatSolver;
+import Solver.ManualSolver;
+import UsefullClasses.Dictionary;
 
 public class App {
 
@@ -118,27 +122,23 @@ public class App {
 
 
 	}
+	
 	public static void main(String[] args) {
 		Dictionary abc=null;
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
-		//new MainThread();
-		//new BagTiles();
+
 		try {
 			abc=new Dictionary();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		//		System.out.println(abc.voc.getNode("gr").isWord());
-
-		
-		
+	
 		
 		setGUI();
 				
@@ -170,22 +170,9 @@ public class App {
 		c2.start();
 		c3.start();
 		c4.start();
-		System.out.println(abc.map.get("kibbled"));
 
 
 		mainFrame.setVisible(true); 
-
-		AutomatSolver automatSolver=new AutomatSolver();
-		//System.out.println(automatSolver.getWord());
-
-
-		
-//	    TimerTask myTask = new TimerTask() {
-//	        @Override
-//	        public void run() {
-//	            System.out.println("merge");
-//	        }
-//	    };
 		
 	}
 

@@ -1,4 +1,4 @@
-package tema7;
+package UsefullClasses;
 
 import java.awt.Toolkit;
 import java.util.Timer;
@@ -18,7 +18,7 @@ public class TimeKeeper extends TimerTask {
 	int minuts;
 	JLabel textArea;
 	
-	TimeKeeper(JLabel textArea)
+	public TimeKeeper(JLabel textArea)
 	{
 		seconds=0;
 		minuts=0;

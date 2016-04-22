@@ -1,4 +1,4 @@
-package tema7;
+package UsefullClasses;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,10 +7,10 @@ import java.util.Random;
 import java.util.Vector;
 
 public class BagTiles {
-	Vector<Character> bag;
+	public Vector<Character> bag;
 	private Random rand;
 	
-	BagTiles() throws IOException
+	public BagTiles() throws IOException
 	{
 		rand= new Random();
 		bag= new Vector<Character>();
@@ -45,13 +45,6 @@ public class BagTiles {
 			{
 				System.out.println("Bag is Empty. Game OVER!");
 				break;
-//				try {
-//					Thread.sleep(100000);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				System.exit(0);
 				
 			}
 			randomNum = rand.nextInt((bag.size()));

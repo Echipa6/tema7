@@ -1,9 +1,13 @@
-package tema7;
+package MainPackage;
 
 import java.awt.Color;
 import java.util.Vector;
 
 import javax.swing.JLabel;
+
+import Solver.AutomatSolver;
+import Solver.ManualSolver;
+import Solver.Solver;
 
 class Player extends Thread {
 	private Table table;
@@ -77,8 +81,12 @@ class Player extends Thread {
 		}
 
 	}
+	
 	public void gainScore(int i) {
 		this.score+=i;
 
+	}
+	public int getScore() {
+		return score;
 	}
 }
