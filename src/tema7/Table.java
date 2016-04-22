@@ -12,6 +12,7 @@ class Table {
 	private BagTiles bagTiles;
 	Vector<Player> players;
 	
+	
 	public Table( JTextArea textArea)
 	{
 		this.textArea=textArea;
@@ -47,7 +48,7 @@ class Table {
 	private void reloadTail(String word)
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
-		
+		System.out.println("Player"+(currentPlayerNumber+1)+" "+word);
 		this.textArea.append("Player"+(currentPlayerNumber+1)+" "+word+'\n');
 		currentPlayer.gainScore(word.length()*5);
 		currentPlayer.removeMyTiles(word);
@@ -62,7 +63,16 @@ class Table {
 		
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		currentPlayer.setLabelActive();
-		reloadTail(currentPlayer.solver.getWord(currentPlayer.getMyTiles()));
+		
+		String s=currentPlayer.solver.getWord(currentPlayer.getMyTiles());
+		int i=0;
+		while(s.isEmpty())
+		{
+			s=currentPlayer.solver.getWord(currentPlayer.getMyTiles());
+			//System.out.println(i);
+			
+		}
+		reloadTail(s);
 		
 		try {
 			Thread.sleep(1000);
@@ -105,3 +115,5 @@ class Table {
 		notifyAll();
 	}
 }
+
+
