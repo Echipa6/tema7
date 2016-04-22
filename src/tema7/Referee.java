@@ -2,11 +2,12 @@ package tema7;
 
 import java.util.Timer;
 
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 class Referee extends Thread {
 	private Table table;
-	public Referee(Table b, JTextArea textArea) {
+	public Referee(Table b, JLabel textArea) {
 		table = b;
 		setDaemon(true);
 		Timer timer = new Timer();

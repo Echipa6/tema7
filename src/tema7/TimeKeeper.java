@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -15,9 +16,9 @@ public class TimeKeeper extends TimerTask {
 
 	int seconds;
 	int minuts;
-	JTextArea textArea;
+	JLabel textArea;
 	
-	TimeKeeper(JTextArea textArea)
+	TimeKeeper(JLabel textArea)
 	{
 		seconds=0;
 		minuts=0;
@@ -33,7 +34,7 @@ public class TimeKeeper extends TimerTask {
 			this.seconds=0;
 			this.minuts++;
 		}
-		textArea.append(minuts+":"+seconds+'\n');
+		textArea.setText(minuts+":"+seconds);
 		
 		
 

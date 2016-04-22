@@ -29,6 +29,18 @@ class Table {
 	}
 	public Vector<Character> getMissedTiles(int currentNumberTiles)
 	{ 
+		if(bagTiles.bag.isEmpty())
+		{
+			this.textArea.append("GAME OVER! The bag is empty.");
+			try {
+				Thread.sleep(100000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		
 		return bagTiles.getTiles(7-currentNumberTiles);
 		
 	}
@@ -36,7 +48,7 @@ class Table {
 	{
 		Player currentPlayer=players.elementAt(currentPlayerNumber);
 		
-		this.textArea.append("Player"+currentPlayerNumber+1+" "+word+'\n');
+		this.textArea.append("Player"+(currentPlayerNumber+1)+" "+word+'\n');
 		currentPlayer.gainScore(word.length()*5);
 		currentPlayer.removeMyTiles(word);
 
@@ -57,7 +69,7 @@ class Table {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		//currentPlayer.endTurn();
+		currentPlayer.endTurn();
 	}
 	
 	public synchronized int get(int consNumber) {
