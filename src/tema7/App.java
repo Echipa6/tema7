@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -116,7 +118,7 @@ public class App {
 				
 		
 		Table b=new Table(textArea);
-		Referee p=new Referee(b);
+		Referee p=new Referee(b, textArea);
 		Player c1=new Player(b,1,labelPlayer1);
 		Player c2=new Player(b,2,labelPlayer2);
 		Player c3=new Player(b,3,labelPlayer3);
@@ -138,6 +140,14 @@ public class App {
 		//System.out.println(automatSolver.getWord());
 
 
+		
+//	    TimerTask myTask = new TimerTask() {
+//	        @Override
+//	        public void run() {
+//	            System.out.println("merge");
+//	        }
+//	    };
+		
 	}
 
 }

@@ -39,10 +39,7 @@ class Table {
 		this.textArea.append("Player"+currentPlayerNumber+" "+word+'\n');
 		currentPlayer.gainScore(word.length()*5);
 		currentPlayer.removeMyTiles(word);
-<<<<<<< HEAD
-		
-=======
->>>>>>> 3c78a9360375decad0c0262f0c3a463aeaa2df0d
+
 		currentPlayer.addMyTiles(getMissedTiles(currentPlayer.getNumberTiles()));
 		
 	}
